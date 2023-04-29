@@ -1,0 +1,65 @@
+<ng-container *ngIf="product.length != 0">
+  <div class="container">
+    <div class="card-table">
+      <div class="card-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>sr.no</th>
+              <th>Product Name</th>
+              <th>Product Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of product; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.title }}</td>
+              <td>
+                <img style="width: 120px" src="{{ item.image }}" alt="" />
+              </td>
+              <td style="width: 25%">{{ item.description }}</td>
+              <td style="width: 12%">{{ item.price }}</td>
+              <td style="width: 12%">{{ item.Quantity }}</td>
+              <td style="width: 12%">{{ item.total }}</td>
+              <td>
+                <button (click)="removeItem(item)" class="btn btn-danger">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="4"></td>
+              <td><button (click)="emptyCart()" class="btn btn-danger">Empty Card</button></td>
+              <td><button routerLink="/products" class="btn btn-primary">shop Card</button></td>
+              <td><button class="btn btn-success">check Out</button></td>
+            <td><strong>Grand Total:${{grandTotal}}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="product.length == 0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My cart</h5>
+    </div>
+    <div class="center">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKeVavQpBiFmNS_TsyrHRs7R65n28-DPEgqKik9VNr1LXYI2cGB4uu-qizBRliV-dp4S4&usqp=CAU"
+        alt=""
+      />
+      <h4>your cart is empty</h4>
+      <h6>Add item to it now</h6>
+      <button routerLink="/products" class="btn btn-primary">shop now</button>
+    </div>
+  </div>
+</ng-container>
